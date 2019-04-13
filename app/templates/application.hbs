@@ -1,5 +1,9 @@
 Posts! <br>
 {{file-upload url="/upload"}}
+
+{{#link-to "post-page"}}
+	content
+{{/link-to}}
 <div class="timeline">
 	{{#each model as |post|}}
 		<div class="postCont">
