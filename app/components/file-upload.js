@@ -9,6 +9,8 @@ export default FileField.extend({
 
         if (!Ember.isEmpty(files)) {
             uploader.upload(files[0]);
+            console.log(files[0]);
+            
         }
     }
 });
