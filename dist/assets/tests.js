@@ -24,6 +24,30 @@ define("web-miniproject/tests/integration/components/file-upload-test", ["qunit"
     });
   });
 });
+define("web-miniproject/tests/integration/components/header-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  (0, _qunit.module)('Integration | Component | header', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      // Set any properties with this.set('myProperty', 'value');
+      // Handle any actions with this.set('myAction', function(val) { ... });
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "hvuoP8hd",
+        "block": "{\"symbols\":[],\"statements\":[[1,[21,\"header\"],false]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
+
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "VHFrAUQd",
+        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"header\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), 'template block text');
+    });
+  });
+});
 define("web-miniproject/tests/lint/app.lint-test", [], function () {
   "use strict";
 
@@ -38,7 +62,11 @@ define("web-miniproject/tests/lint/app.lint-test", [], function () {
   });
   QUnit.test('components/file-upload.js', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'components/file-upload.js should pass ESLint\n\n7:27 - \'url\' is not defined. (no-undef)\n10:14 - \'Ember\' is not defined. (no-undef)');
+    assert.ok(false, 'components/file-upload.js should pass ESLint\n\n12:14 - \'Ember\' is not defined. (no-undef)\n14:13 - Unexpected console statement. (no-console)');
+  });
+  QUnit.test('components/header.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/header.js should pass ESLint\n\n');
   });
   QUnit.test('models/post.js', function (assert) {
     assert.expect(1);
@@ -56,9 +84,17 @@ define("web-miniproject/tests/lint/app.lint-test", [], function () {
     assert.expect(1);
     assert.ok(true, 'routes/application.js should pass ESLint\n\n');
   });
+  QUnit.test('routes/post-page.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'routes/post-page.js should pass ESLint\n\n');
+  });
   QUnit.test('serializers/application.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'serializers/application.js should pass ESLint\n\n');
+  });
+  QUnit.test('services/ajax.js', function (assert) {
+    assert.expect(1);
+    assert.ok(false, 'services/ajax.js should pass ESLint\n\n3:8 - \'Ember\' is defined but never used. (no-unused-vars)');
   });
 });
 define("web-miniproject/tests/lint/templates.template.lint-test", [], function () {
@@ -69,9 +105,13 @@ define("web-miniproject/tests/lint/templates.template.lint-test", [], function (
     assert.expect(1);
     assert.ok(true, 'web-miniproject/templates/application.hbs should pass TemplateLint.\n\n');
   });
-  QUnit.test('web-miniproject/templates/components/file-upload.hbs', function (assert) {
+  QUnit.test('web-miniproject/templates/components/header.hbs', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'web-miniproject/templates/components/file-upload.hbs should pass TemplateLint.\n\n');
+    assert.ok(true, 'web-miniproject/templates/components/header.hbs should pass TemplateLint.\n\n');
+  });
+  QUnit.test('web-miniproject/templates/post-page.hbs', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'web-miniproject/templates/post-page.hbs should pass TemplateLint.\n\n');
   });
 });
 define("web-miniproject/tests/lint/tests.lint-test", [], function () {
@@ -81,6 +121,10 @@ define("web-miniproject/tests/lint/tests.lint-test", [], function () {
   QUnit.test('integration/components/file-upload-test.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'integration/components/file-upload-test.js should pass ESLint\n\n');
+  });
+  QUnit.test('integration/components/header-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/header-test.js should pass ESLint\n\n');
   });
   QUnit.test('test-helper.js', function (assert) {
     assert.expect(1);
@@ -98,9 +142,17 @@ define("web-miniproject/tests/lint/tests.lint-test", [], function () {
     assert.expect(1);
     assert.ok(true, 'unit/routes/application-test.js should pass ESLint\n\n');
   });
+  QUnit.test('unit/routes/post-page-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/routes/post-page-test.js should pass ESLint\n\n');
+  });
   QUnit.test('unit/serializers/application-test.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'unit/serializers/application-test.js should pass ESLint\n\n');
+  });
+  QUnit.test('unit/services/ajax-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/services/ajax-test.js should pass ESLint\n\n');
   });
 });
 define("web-miniproject/tests/test-helper", ["web-miniproject/app", "web-miniproject/config/environment", "@ember/test-helpers", "ember-qunit"], function (_app, _environment, _testHelpers, _emberQunit) {
@@ -145,6 +197,17 @@ define("web-miniproject/tests/unit/routes/application-test", ["qunit", "ember-qu
     });
   });
 });
+define("web-miniproject/tests/unit/routes/post-page-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
+  "use strict";
+
+  (0, _qunit.module)('Unit | Route | postPage', function (hooks) {
+    (0, _emberQunit.setupTest)(hooks);
+    (0, _qunit.test)('it exists', function (assert) {
+      let route = this.owner.lookup('route:post-page');
+      assert.ok(route);
+    });
+  });
+});
 define("web-miniproject/tests/unit/serializers/application-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
   "use strict";
 
@@ -161,6 +224,18 @@ define("web-miniproject/tests/unit/serializers/application-test", ["qunit", "emb
       let record = store.createRecord('application', {});
       let serializedRecord = record.serialize();
       assert.ok(serializedRecord);
+    });
+  });
+});
+define("web-miniproject/tests/unit/services/ajax-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
+  "use strict";
+
+  (0, _qunit.module)('Unit | Service | ajax', function (hooks) {
+    (0, _emberQunit.setupTest)(hooks); // Replace this with your real tests.
+
+    (0, _qunit.test)('it exists', function (assert) {
+      let service = this.owner.lookup('service:ajax');
+      assert.ok(service);
     });
   });
 });

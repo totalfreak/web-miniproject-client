@@ -25,7 +25,7 @@ module.exports = function(environment) {
       'default-src': "'none'",
       'script-src': "'self' 'unsafe-inline' 'unsafe-eval'",
       'font-src': "'self'",
-      'connect-src': "'self' https://web-miniproject-client.herokuapp.com",
+      'connect-src': "'self' http://localhost:4200",
       'Access-Control-Allow-Origin': 'https://web-miniproject-server.herokuapp.com/',
       "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
       'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE, OPTIONS',

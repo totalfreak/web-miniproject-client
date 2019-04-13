@@ -55,17 +55,34 @@
   _exports.default = void 0;
 
   var _default = _fileField.default.extend({
+    url: "",
+
     filesDidChange(files) {
+      let url = this.get('url');
+
       const uploader = _uploader.default.create({
         url: this.get(url)
       });
 
       if (!Ember.isEmpty(files)) {
         uploader.upload(files[0]);
+        console.log(files[0]);
       }
     }
 
   });
+
+  _exports.default = _default;
+});
+;define("web-miniproject/components/header", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.Component.extend({});
 
   _exports.default = _default;
 });
@@ -299,20 +316,23 @@
   };
   _exports.default = _default;
 });
-;define("web-miniproject/models/post", ["exports", "ember-data"], function (_exports, _emberData) {
+;define("web-miniproject/models/post", ["exports", "ember-data", "web-miniproject/routes/application"], function (_exports, _emberData, _application) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-
-  var _default = _emberData.default.Model.extend({
+  _application.default.Post = _emberData.default.Model.extend({
     title: _emberData.default.attr('string'),
     image: _emberData.default.attr('string'),
+    text: _emberData.default.attr('string'),
+    comments: _emberData.default.hasMany('comment')
+  });
+  _application.default.Comment = _emberData.default.Model.extend({
     text: _emberData.default.attr('string')
   });
-
+  var _default = _application.default.Post;
   _exports.default = _default;
 });
 ;define("web-miniproject/resolver", ["exports", "ember-resolver"], function (_exports, _emberResolver) {
@@ -336,7 +356,9 @@
     location: _environment.default.locationType,
     rootURL: _environment.default.rootURL
   });
-  Router.map(function () {});
+  Router.map(function () {
+    this.route('postPage');
+  });
   var _default = Router;
   _exports.default = _default;
 });
@@ -349,9 +371,27 @@
   _exports.default = void 0;
 
   var _default = Ember.Route.extend({
-    model: function () {
+    beforeModel() {
+      this.replaceWith('postPage');
+    }
+
+  });
+
+  _exports.default = _default;
+});
+;define("web-miniproject/routes/post-page", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.Route.extend({
+    model() {
       return this.store.findAll('post');
     }
+
   });
 
   _exports.default = _default;
@@ -379,12 +419,13 @@
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  Object.defineProperty(_exports, "default", {
-    enumerable: true,
-    get: function () {
-      return _ajax.default;
-    }
+  _exports.default = void 0;
+
+  var _default = _ajax.default.extend({
+    host: 'https://web-miniproject-server.herokuapp.com/api/posts'
   });
+
+  _exports.default = _default;
 });
 ;define("web-miniproject/templates/application", ["exports"], function (_exports) {
   "use strict";
@@ -395,8 +436,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "QTUooxEj",
-    "block": "{\"symbols\":[\"post\"],\"statements\":[[0,\"Posts! \"],[7,\"br\"],[9],[10],[0,\"\\n\"],[1,[27,\"file-upload\",null,[[\"url\"],[\"/upload\"]]],false],[0,\"\\n\"],[7,\"div\"],[11,\"class\",\"timeline\"],[9],[0,\"\\n\"],[4,\"each\",[[23,[\"model\"]]],null,{\"statements\":[[0,\"\\t\\t\"],[7,\"div\"],[11,\"class\",\"postCont\"],[9],[0,\"\\n\\t\\t\\t\"],[7,\"p\"],[9],[0,\"Id: \"],[1,[22,1,[\"id\"]],false],[10],[0,\"\\n\\t\\t\\t\"],[7,\"h1\"],[9],[1,[22,1,[\"title\"]],false],[10],[0,\"\\n\\t\\t\\t\\n\\t\\t\\t\"],[1,[22,1,[\"image\"]],false],[0,\" \\n\\t\\t\\t\"],[7,\"h3\"],[9],[1,[22,1,[\"text\"]],false],[10],[0,\" \"],[7,\"br\"],[9],[10],[0,\"\\n\\t\\t\"],[10],[0,\"\\n\"]],\"parameters\":[1]},null],[10],[0,\"\\n\"],[1,[21,\"outlet\"],false]],\"hasEval\":false}",
+    "id": "0duqmUTO",
+    "block": "{\"symbols\":[],\"statements\":[[1,[21,\"outlet\"],false]],\"hasEval\":false}",
     "meta": {
       "moduleName": "web-miniproject/templates/application.hbs"
     }
@@ -404,7 +445,7 @@
 
   _exports.default = _default;
 });
-;define("web-miniproject/templates/components/file-upload", ["exports"], function (_exports) {
+;define("web-miniproject/templates/components/header", ["exports"], function (_exports) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -413,10 +454,28 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "68wBH0pG",
-    "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1]],\"hasEval\":false}",
+    "id": "iht+7pZX",
+    "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"class\",\"header\"],[9],[0,\"\\n    \"],[7,\"img\"],[11,\"src\",\"/client/public/images/logo.png\"],[11,\"alt\",\"\"],[9],[10],[0,\"\\n    Wahoo\\n\"],[10]],\"hasEval\":false}",
     "meta": {
-      "moduleName": "web-miniproject/templates/components/file-upload.hbs"
+      "moduleName": "web-miniproject/templates/components/header.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
+;define("web-miniproject/templates/post-page", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "m5Gzb2L5",
+    "block": "{\"symbols\":[\"post\"],\"statements\":[[0,\"\\n\"],[1,[21,\"header\"],false],[0,\"\\n\\n\"],[7,\"div\"],[11,\"class\",\"newPostCont\"],[9],[0,\"\\n    \"],[7,\"h4\"],[9],[0,\"Make a new post\"],[10],[0,\"\\n    \"],[7,\"form\"],[11,\"action\",\"/api/posts\"],[9],[0,\"\\n        Title: \"],[1,[27,\"input\",null,[[\"value\"],[[23,[\"title\"]]]]],false],[0,\" \"],[7,\"br\"],[9],[10],[0,\"\\n        Text: \"],[1,[27,\"input\",null,[[\"value\"],[[23,[\"text\"]]]]],false],[0,\" \"],[7,\"br\"],[9],[10],[0,\"\\n        Image: \"],[1,[27,\"file-upload\",null,[[\"url\",\"class\"],[\"/upload\",\"newPostButton\"]]],false],[0,\" \"],[7,\"br\"],[9],[10],[0,\"\\n        \"],[7,\"button\"],[11,\"type\",\"submit\"],[9],[0,\"Submit\"],[10],[0,\"\\n    \"],[10],[0,\"\\n    \\n\"],[10],[0,\"\\n\\n\"],[7,\"div\"],[11,\"class\",\"timeline\"],[9],[0,\"\\n\"],[4,\"each\",[[22,0,[\"model\"]]],null,{\"statements\":[[0,\"\\t\\t\"],[7,\"div\"],[11,\"class\",\"postCont\"],[9],[0,\"\\n\\t\\t\\t\"],[7,\"p\"],[9],[0,\"Id: \"],[1,[22,1,[\"id\"]],false],[10],[0,\"\\n\\t\\t\\t\"],[7,\"h1\"],[9],[1,[22,1,[\"title\"]],false],[10],[0,\"\\n\\t\\t\\t\\n\\t\\t\\t\"],[1,[22,1,[\"image\"]],false],[0,\" \\n\\t\\t\\t\"],[7,\"h3\"],[9],[1,[22,1,[\"text\"]],false],[10],[0,\" \"],[7,\"br\"],[9],[10],[0,\"\\n\\t\\t\"],[10],[0,\"\\n\"]],\"parameters\":[1]},null],[10]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "web-miniproject/templates/post-page.hbs"
     }
   });
 
@@ -471,7 +530,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("web-miniproject/app")["default"].create({"name":"web-miniproject","version":"0.0.0+0b88d7b5"});
+            require("web-miniproject/app")["default"].create({"name":"web-miniproject","version":"0.0.0+196a41d2"});
           }
         
 //# sourceMappingURL=web-miniproject.map
