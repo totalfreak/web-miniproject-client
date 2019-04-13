@@ -1,0 +1,12 @@
+@import "bootstrap";
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+.postCont {
+    margin: 40px;
+}
