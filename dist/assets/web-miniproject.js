@@ -33,6 +33,32 @@
   var _default = App;
   _exports.default = _default;
 });
+;define("web-miniproject/components/ember-modal-dialog-positioned-container", ["exports", "ember-modal-dialog/components/positioned-container"], function (_exports, _positionedContainer) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _positionedContainer.default;
+    }
+  });
+});
+;define("web-miniproject/components/ember-wormhole", ["exports", "ember-wormhole/components/ember-wormhole"], function (_exports, _emberWormhole) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _emberWormhole.default;
+    }
+  });
+});
 ;define("web-miniproject/components/file-field", ["exports", "ember-uploader/components/file-field"], function (_exports, _fileField) {
   "use strict";
 
@@ -86,6 +112,304 @@
 
   _exports.default = _default;
 });
+;define("web-miniproject/components/infinity-loader", ["exports", "ember-infinity/components/infinity-loader"], function (_exports, _infinityLoader) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _default = _infinityLoader.default;
+  _exports.default = _default;
+});
+;define("web-miniproject/components/labeled-radio-button", ["exports", "ember-radio-button/components/labeled-radio-button"], function (_exports, _labeledRadioButton) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _default = _labeledRadioButton.default;
+  _exports.default = _default;
+});
+;define("web-miniproject/components/modal-dialog-overlay", ["exports", "ember-modal-dialog/components/modal-dialog-overlay"], function (_exports, _modalDialogOverlay) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _modalDialogOverlay.default;
+    }
+  });
+});
+;define("web-miniproject/components/modal-dialog", ["exports", "ember-modal-dialog/components/modal-dialog"], function (_exports, _modalDialog) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _modalDialog.default;
+    }
+  });
+});
+;define("web-miniproject/components/new-post-button", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.Component.extend({});
+
+  _exports.default = _default;
+});
+;define("web-miniproject/components/post-page", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.Component.extend({});
+
+  _exports.default = _default;
+});
+;define("web-miniproject/components/radio-button-input", ["exports", "ember-radio-button/components/radio-button-input"], function (_exports, _radioButtonInput) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _default = _radioButtonInput.default;
+  _exports.default = _default;
+});
+;define("web-miniproject/components/radio-button", ["exports", "ember-radio-button/components/radio-button"], function (_exports, _radioButton) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _default = _radioButton.default;
+  _exports.default = _default;
+});
+;define("web-miniproject/components/tether-dialog", ["exports", "ember-modal-dialog/components/tether-dialog"], function (_exports, _tetherDialog) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _tetherDialog.default;
+    }
+  });
+});
+;define("web-miniproject/components/ui-accordion", ["exports", "semantic-ui-ember/components/ui-accordion"], function (_exports, _uiAccordion) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _uiAccordion.default;
+    }
+  });
+});
+;define("web-miniproject/components/ui-checkbox", ["exports", "semantic-ui-ember/components/ui-checkbox"], function (_exports, _uiCheckbox) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _uiCheckbox.default;
+    }
+  });
+});
+;define("web-miniproject/components/ui-dimmer", ["exports", "semantic-ui-ember/components/ui-dimmer"], function (_exports, _uiDimmer) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _uiDimmer.default;
+    }
+  });
+});
+;define("web-miniproject/components/ui-dropdown", ["exports", "semantic-ui-ember/components/ui-dropdown"], function (_exports, _uiDropdown) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _uiDropdown.default;
+    }
+  });
+});
+;define("web-miniproject/components/ui-embed", ["exports", "semantic-ui-ember/components/ui-embed"], function (_exports, _uiEmbed) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _uiEmbed.default;
+    }
+  });
+});
+;define("web-miniproject/components/ui-modal", ["exports", "semantic-ui-ember/components/ui-modal"], function (_exports, _uiModal) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _uiModal.default;
+    }
+  });
+});
+;define("web-miniproject/components/ui-nag", ["exports", "semantic-ui-ember/components/ui-nag"], function (_exports, _uiNag) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _uiNag.default;
+    }
+  });
+});
+;define("web-miniproject/components/ui-popup", ["exports", "semantic-ui-ember/components/ui-popup"], function (_exports, _uiPopup) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _uiPopup.default;
+    }
+  });
+});
+;define("web-miniproject/components/ui-progress", ["exports", "semantic-ui-ember/components/ui-progress"], function (_exports, _uiProgress) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _uiProgress.default;
+    }
+  });
+});
+;define("web-miniproject/components/ui-radio", ["exports", "semantic-ui-ember/components/ui-radio"], function (_exports, _uiRadio) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _uiRadio.default;
+    }
+  });
+});
+;define("web-miniproject/components/ui-rating", ["exports", "semantic-ui-ember/components/ui-rating"], function (_exports, _uiRating) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _uiRating.default;
+    }
+  });
+});
+;define("web-miniproject/components/ui-search", ["exports", "semantic-ui-ember/components/ui-search"], function (_exports, _uiSearch) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _uiSearch.default;
+    }
+  });
+});
+;define("web-miniproject/components/ui-shape", ["exports", "semantic-ui-ember/components/ui-shape"], function (_exports, _uiShape) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _uiShape.default;
+    }
+  });
+});
+;define("web-miniproject/components/ui-sidebar", ["exports", "semantic-ui-ember/components/ui-sidebar"], function (_exports, _uiSidebar) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _uiSidebar.default;
+    }
+  });
+});
+;define("web-miniproject/components/ui-sticky", ["exports", "semantic-ui-ember/components/ui-sticky"], function (_exports, _uiSticky) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _uiSticky.default;
+    }
+  });
+});
 ;define("web-miniproject/components/welcome-page", ["exports", "ember-welcome-page/components/welcome-page"], function (_exports, _welcomePage) {
   "use strict";
 
@@ -138,6 +462,25 @@
 
   _exports.default = _default;
 });
+;define("web-miniproject/helpers/map-value", ["exports", "semantic-ui-ember/helpers/map-value"], function (_exports, _mapValue) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _mapValue.default;
+    }
+  });
+  Object.defineProperty(_exports, "mapValue", {
+    enumerable: true,
+    get: function () {
+      return _mapValue.mapValue;
+    }
+  });
+});
 ;define("web-miniproject/helpers/pluralize", ["exports", "ember-inflector/lib/helpers/pluralize"], function (_exports, _pluralize) {
   "use strict";
 
@@ -156,6 +499,19 @@
   });
   _exports.default = void 0;
   var _default = _singularize.default;
+  _exports.default = _default;
+});
+;define("web-miniproject/initializers/add-modals-container", ["exports", "ember-modal-dialog/initializers/add-modals-container"], function (_exports, _addModalsContainer) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _default = {
+    name: 'add-modals-container',
+    initialize: _addModalsContainer.default
+  };
   _exports.default = _default;
 });
 ;define("web-miniproject/initializers/app-version", ["exports", "ember-cli-app-version/initializer-factory", "web-miniproject/config/environment"], function (_exports, _initializerFactory, _environment) {
@@ -249,6 +605,25 @@
   };
   _exports.default = _default;
 });
+;define("web-miniproject/initializers/ember-keyboard-first-responder-inputs", ["exports", "ember-keyboard/initializers/ember-keyboard-first-responder-inputs"], function (_exports, _emberKeyboardFirstResponderInputs) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _emberKeyboardFirstResponderInputs.default;
+    }
+  });
+  Object.defineProperty(_exports, "initialize", {
+    enumerable: true,
+    get: function () {
+      return _emberKeyboardFirstResponderInputs.initialize;
+    }
+  });
+});
 ;define("web-miniproject/initializers/export-application-global", ["exports", "web-miniproject/config/environment"], function (_exports, _environment) {
   "use strict";
 
@@ -303,6 +678,25 @@
   };
   _exports.default = _default;
 });
+;define("web-miniproject/initializers/viewport-config", ["exports", "ember-in-viewport/initializers/viewport-config"], function (_exports, _viewportConfig) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _viewportConfig.default;
+    }
+  });
+  Object.defineProperty(_exports, "initialize", {
+    enumerable: true,
+    get: function () {
+      return _viewportConfig.initialize;
+    }
+  });
+});
 ;define("web-miniproject/instance-initializers/ember-data", ["exports", "ember-data/initialize-store-service"], function (_exports, _initializeStoreService) {
   "use strict";
 
@@ -315,6 +709,19 @@
     initialize: _initializeStoreService.default
   };
   _exports.default = _default;
+});
+;define("web-miniproject/mixins/base", ["exports", "semantic-ui-ember/mixins/base"], function (_exports, _base) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _base.default;
+    }
+  });
 });
 ;define("web-miniproject/models/post", ["exports", "ember-data", "web-miniproject/routes/application"], function (_exports, _emberData, _application) {
   "use strict";
@@ -413,6 +820,32 @@
 
   _exports.default = _default;
 });
+;define("web-miniproject/services/-observer-admin", ["exports", "ember-in-viewport/services/-observer-admin"], function (_exports, _observerAdmin) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _observerAdmin.default;
+    }
+  });
+});
+;define("web-miniproject/services/-raf-admin", ["exports", "ember-in-viewport/services/-raf-admin"], function (_exports, _rafAdmin) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _rafAdmin.default;
+    }
+  });
+});
 ;define("web-miniproject/services/ajax", ["exports", "ember-ajax/services/ajax"], function (_exports, _ajax) {
   "use strict";
 
@@ -427,6 +860,42 @@
 
   _exports.default = _default;
 });
+;define("web-miniproject/services/infinity", ["exports", "ember-infinity/services/infinity"], function (_exports, _infinity) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _infinity.default;
+    }
+  });
+});
+;define("web-miniproject/services/keyboard", ["exports", "ember-keyboard/services/keyboard"], function (_exports, _keyboard) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _keyboard.default;
+    }
+  });
+});
+;define("web-miniproject/services/modal-dialog", ["exports", "ember-modal-dialog/services/modal-dialog"], function (_exports, _modalDialog) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _default = _modalDialog.default;
+  _exports.default = _default;
+});
 ;define("web-miniproject/templates/application", ["exports"], function (_exports) {
   "use strict";
 
@@ -436,8 +905,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "0duqmUTO",
-    "block": "{\"symbols\":[],\"statements\":[[1,[21,\"outlet\"],false]],\"hasEval\":false}",
+    "id": "hqXuAaWd",
+    "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[1,[21,\"outlet\"],false]],\"hasEval\":false}",
     "meta": {
       "moduleName": "web-miniproject/templates/application.hbs"
     }
@@ -454,14 +923,130 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "iht+7pZX",
-    "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"class\",\"header\"],[9],[0,\"\\n    \"],[7,\"img\"],[11,\"src\",\"/client/public/images/logo.png\"],[11,\"alt\",\"\"],[9],[10],[0,\"\\n    Wahoo\\n\"],[10]],\"hasEval\":false}",
+    "id": "DOZX9TK/",
+    "block": "{\"symbols\":[],\"statements\":[[4,\"ui-sticky\",null,null,{\"statements\":[[7,\"div\"],[11,\"class\",\"header\"],[9],[0,\"\\n    \"],[7,\"img\"],[11,\"src\",\"../../../public/images/logo.png\"],[9],[10],[0,\"\\n\"],[10],[0,\"\\n\"]],\"parameters\":[]},null]],\"hasEval\":false}",
     "meta": {
       "moduleName": "web-miniproject/templates/components/header.hbs"
     }
   });
 
   _exports.default = _default;
+});
+;define("web-miniproject/templates/components/infinity-loader", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "TxSDIoeM",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[4,\"if\",[[24,1]],null,{\"statements\":[[0,\"  \"],[14,1,[[23,[\"infinityModelContent\"]]]],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[4,\"if\",[[23,[\"isDoneLoading\"]]],null,{\"statements\":[[0,\"    \"],[7,\"span\"],[9],[1,[21,\"loadedText\"],false],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"    \"],[7,\"span\"],[9],[1,[21,\"loadingText\"],false],[10],[0,\"\\n\"]],\"parameters\":[]}]],\"parameters\":[]}]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "web-miniproject/templates/components/infinity-loader.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
+;define("web-miniproject/templates/components/labeled-radio-button", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "A/ggGH6E",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[1,[27,\"radio-button\",null,[[\"radioClass\",\"radioId\",\"changed\",\"disabled\",\"groupValue\",\"name\",\"required\",\"value\"],[[23,[\"radioClass\"]],[23,[\"radioId\"]],\"innerRadioChanged\",[23,[\"disabled\"]],[23,[\"groupValue\"]],[23,[\"name\"]],[23,[\"required\"]],[23,[\"value\"]]]]],false],[0,\"\\n\\n\"],[14,1],[0,\"\\n\"]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "web-miniproject/templates/components/labeled-radio-button.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
+;define("web-miniproject/templates/components/modal-dialog", ["exports", "ember-modal-dialog/templates/components/modal-dialog"], function (_exports, _modalDialog) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _modalDialog.default;
+    }
+  });
+});
+;define("web-miniproject/templates/components/new-post-button", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "+gWAFSh/",
+    "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"class\",\"newPostCont\"],[9],[0,\"\\n\"],[4,\"ui-accordion\",null,[[\"class\"],[\"styled\"]],{\"statements\":[[0,\"    \"],[7,\"div\"],[11,\"class\",\"title openNewPostCont\"],[9],[0,\"\\n        Make a post\\n    \"],[10],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"content\"],[9],[0,\"\\n        \"],[7,\"br\"],[9],[10],[7,\"br\"],[9],[10],[0,\"\\n        \"],[7,\"form\"],[11,\"action\",\"/api/posts\"],[11,\"class\",\"ui form\"],[9],[0,\"\\n            Title: \"],[1,[27,\"input\",null,[[\"value\"],[[23,[\"title\"]]]]],false],[0,\" \"],[7,\"br\"],[9],[10],[0,\"\\n            Text: \"],[1,[27,\"input\",null,[[\"value\"],[[23,[\"text\"]]]]],false],[0,\" \"],[7,\"br\"],[9],[10],[0,\"\\n            Image: \"],[1,[27,\"file-upload\",null,[[\"url\",\"class\"],[\"/upload\",\"ui button newPostButton\"]]],false],[0,\" \"],[7,\"br\"],[9],[10],[0,\"\\n            \"],[7,\"button\"],[11,\"type\",\"submit\"],[9],[0,\"Submit\"],[10],[0,\"\\n        \"],[10],[0,\"\\n    \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[10],[0,\"\\n\"]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "web-miniproject/templates/components/new-post-button.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
+;define("web-miniproject/templates/components/post-page", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "aJXzCCGL",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "web-miniproject/templates/components/post-page.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
+;define("web-miniproject/templates/components/radio-button", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "g2GSVWaz",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[4,\"if\",[[24,1]],null,{\"statements\":[[0,\"  \"],[7,\"label\"],[12,\"class\",[28,[\"ember-radio-button \",[27,\"if\",[[23,[\"checked\"]],\"checked\"],null],\" \",[21,\"joinedClassNames\"]]]],[12,\"for\",[21,\"radioId\"]],[9],[0,\"\\n    \"],[1,[27,\"radio-button-input\",null,[[\"class\",\"id\",\"disabled\",\"name\",\"required\",\"groupValue\",\"value\",\"changed\"],[[23,[\"radioClass\"]],[23,[\"radioId\"]],[23,[\"disabled\"]],[23,[\"name\"]],[23,[\"required\"]],[23,[\"groupValue\"]],[23,[\"value\"]],\"changed\"]]],false],[0,\"\\n\\n    \"],[14,1],[0,\"\\n  \"],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"  \"],[1,[27,\"radio-button-input\",null,[[\"class\",\"id\",\"disabled\",\"name\",\"required\",\"groupValue\",\"value\",\"changed\"],[[23,[\"radioClass\"]],[23,[\"radioId\"]],[23,[\"disabled\"]],[23,[\"name\"]],[23,[\"required\"]],[23,[\"groupValue\"]],[23,[\"value\"]],\"changed\"]]],false],[0,\"\\n\"]],\"parameters\":[]}]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "web-miniproject/templates/components/radio-button.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
+;define("web-miniproject/templates/components/tether-dialog", ["exports", "ember-modal-dialog/templates/components/tether-dialog"], function (_exports, _tetherDialog) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _tetherDialog.default;
+    }
+  });
 });
 ;define("web-miniproject/templates/post-page", ["exports"], function (_exports) {
   "use strict";
@@ -472,8 +1057,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "m5Gzb2L5",
-    "block": "{\"symbols\":[\"post\"],\"statements\":[[0,\"\\n\"],[1,[21,\"header\"],false],[0,\"\\n\\n\"],[7,\"div\"],[11,\"class\",\"newPostCont\"],[9],[0,\"\\n    \"],[7,\"h4\"],[9],[0,\"Make a new post\"],[10],[0,\"\\n    \"],[7,\"form\"],[11,\"action\",\"/api/posts\"],[9],[0,\"\\n        Title: \"],[1,[27,\"input\",null,[[\"value\"],[[23,[\"title\"]]]]],false],[0,\" \"],[7,\"br\"],[9],[10],[0,\"\\n        Text: \"],[1,[27,\"input\",null,[[\"value\"],[[23,[\"text\"]]]]],false],[0,\" \"],[7,\"br\"],[9],[10],[0,\"\\n        Image: \"],[1,[27,\"file-upload\",null,[[\"url\",\"class\"],[\"/upload\",\"newPostButton\"]]],false],[0,\" \"],[7,\"br\"],[9],[10],[0,\"\\n        \"],[7,\"button\"],[11,\"type\",\"submit\"],[9],[0,\"Submit\"],[10],[0,\"\\n    \"],[10],[0,\"\\n    \\n\"],[10],[0,\"\\n\\n\"],[7,\"div\"],[11,\"class\",\"timeline\"],[9],[0,\"\\n\"],[4,\"each\",[[22,0,[\"model\"]]],null,{\"statements\":[[0,\"\\t\\t\"],[7,\"div\"],[11,\"class\",\"postCont\"],[9],[0,\"\\n\\t\\t\\t\"],[7,\"p\"],[9],[0,\"Id: \"],[1,[22,1,[\"id\"]],false],[10],[0,\"\\n\\t\\t\\t\"],[7,\"h1\"],[9],[1,[22,1,[\"title\"]],false],[10],[0,\"\\n\\t\\t\\t\\n\\t\\t\\t\"],[1,[22,1,[\"image\"]],false],[0,\" \\n\\t\\t\\t\"],[7,\"h3\"],[9],[1,[22,1,[\"text\"]],false],[10],[0,\" \"],[7,\"br\"],[9],[10],[0,\"\\n\\t\\t\"],[10],[0,\"\\n\"]],\"parameters\":[1]},null],[10]],\"hasEval\":false}",
+    "id": "HImYtQLd",
+    "block": "{\"symbols\":[\"post\"],\"statements\":[[0,\"\\n\"],[5,\"header\",[],[[],[]]],[0,\"\\n\\n\"],[5,\"new-post-button\",[],[[],[]]],[0,\"\\n\\n\"],[7,\"div\"],[11,\"class\",\"timeline\"],[9],[0,\"\\n\"],[4,\"each\",[[22,0,[\"model\"]]],null,{\"statements\":[[0,\"\\t\\t\"],[7,\"div\"],[11,\"class\",\"postCont\"],[9],[0,\"\\n\\t\\t\\t\"],[7,\"p\"],[9],[0,\"Id: \"],[1,[22,1,[\"id\"]],false],[10],[0,\"\\n\\t\\t\\t\"],[7,\"h1\"],[9],[1,[22,1,[\"title\"]],false],[10],[0,\"\\n\\t\\t\\t\\n\\t\\t\\t\"],[1,[22,1,[\"image\"]],false],[0,\" \\n\\t\\t\\t\"],[7,\"h3\"],[9],[1,[22,1,[\"text\"]],false],[10],[0,\" \"],[7,\"br\"],[9],[10],[0,\"\\n\\t\\t\"],[10],[0,\"\\n\"]],\"parameters\":[1]},null],[0,\"\\t\"],[1,[27,\"infinity-loader\",null,[[\"infinityModel\"],[[22,0,[\"model\"]]]]],false],[0,\"\\n\"],[10]],\"hasEval\":false}",
     "meta": {
       "moduleName": "web-miniproject/templates/post-page.hbs"
     }
@@ -507,6 +1092,32 @@
     }
   });
 });
+;define("web-miniproject/utils/get-cmd-key", ["exports", "ember-keyboard/utils/get-cmd-key"], function (_exports, _getCmdKey) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _getCmdKey.default;
+    }
+  });
+});
+;define("web-miniproject/utils/listener-name", ["exports", "ember-keyboard/utils/listener-name"], function (_exports, _listenerName) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _listenerName.default;
+    }
+  });
+});
 ;
 
 ;define('web-miniproject/config/environment', [], function() {
@@ -530,7 +1141,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("web-miniproject/app")["default"].create({"name":"web-miniproject","version":"0.0.0+196a41d2"});
+            require("web-miniproject/app")["default"].create({"name":"web-miniproject","version":"0.0.0+adae5369"});
           }
         
 //# sourceMappingURL=web-miniproject.map

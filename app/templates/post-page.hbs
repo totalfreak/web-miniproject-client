@@ -1,16 +1,7 @@
 
-{{header}}
+<Header/>
 
-<div class="newPostCont">
-    <h4>Make a new post</h4>
-    <form action="/api/posts">
-        Title: {{input value=title}} <br>
-        Text: {{input value=text}} <br>
-        Image: {{file-upload url="/upload" class="newPostButton"}} <br>
-        <button type="submit">Submit</button>
-    </form>
-    
-</div>
+<NewPostButton/>
 
 <div class="timeline">
 	{{#each this.model as |post|}}
@@ -22,4 +13,5 @@
 			<h3>{{post.text}}</h3> <br>
 		</div>
 	{{/each}}
+	{{infinity-loader infinityModel=this.model}}
 </div>

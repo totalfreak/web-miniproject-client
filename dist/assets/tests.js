@@ -1,5 +1,53 @@
 'use strict';
 
+define("web-miniproject/tests/helpers/ember-keyboard/register-test-helpers", ["exports", "ember-keyboard", "ember-keyboard/fixtures/modifiers-array", "ember-keyboard/fixtures/mouse-buttons-array", "ember-keyboard/utils/get-cmd-key"], function (_exports, _emberKeyboard, _modifiersArray, _mouseButtonsArray, _getCmdKey) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _default;
+
+  const keyEvent = function keyEvent(app, attributes, type, element) {
+    const event = (attributes || '').split('+').reduce((event, attribute) => {
+      if (_modifiersArray.default.indexOf(attribute) > -1) {
+        attribute = attribute === 'cmd' ? (0, _getCmdKey.default)() : attribute;
+        event["".concat(attribute, "Key")] = true;
+      } else if (_mouseButtonsArray.default.indexOf(attribute) > -1) {
+        event.button = (0, _emberKeyboard.getMouseCode)(attribute);
+      } else {
+        event.keyCode = (0, _emberKeyboard.getKeyCode)(attribute);
+      }
+
+      return event;
+    }, {});
+    return app.testHelpers.triggerEvent(element || document.body, type, event);
+  };
+
+  function _default() {
+    Ember.Test.registerAsyncHelper('keyDown', function (app, attributes, element) {
+      return keyEvent(app, attributes, 'keydown', element);
+    });
+    Ember.Test.registerAsyncHelper('keyUp', function (app, attributes, element) {
+      return keyEvent(app, attributes, 'keyup', element);
+    });
+    Ember.Test.registerAsyncHelper('keyPress', function (app, attributes, element) {
+      return keyEvent(app, attributes, 'keypress', element);
+    });
+    Ember.Test.registerAsyncHelper('mouseDown', function (app, attributes, element) {
+      return keyEvent(app, attributes, 'mousedown', element);
+    });
+    Ember.Test.registerAsyncHelper('mouseUp', function (app, attributes, element) {
+      return keyEvent(app, attributes, 'mouseup', element);
+    });
+    Ember.Test.registerAsyncHelper('touchStart', function (app, attributes, element) {
+      return keyEvent(app, attributes, 'touchstart', element);
+    });
+    Ember.Test.registerAsyncHelper('touchEnd', function (app, attributes, element) {
+      return keyEvent(app, attributes, 'touchend', element);
+    });
+  }
+});
 define("web-miniproject/tests/integration/components/file-upload-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
   "use strict";
 
@@ -48,6 +96,54 @@ define("web-miniproject/tests/integration/components/header-test", ["qunit", "em
     });
   });
 });
+define("web-miniproject/tests/integration/components/new-post-button-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  (0, _qunit.module)('Integration | Component | new-post-button', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      // Set any properties with this.set('myProperty', 'value');
+      // Handle any actions with this.set('myAction', function(val) { ... });
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "OV0SZGWf",
+        "block": "{\"symbols\":[],\"statements\":[[1,[21,\"new-post-button\"],false]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
+
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "TPEV0vHJ",
+        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"new-post-button\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), 'template block text');
+    });
+  });
+});
+define("web-miniproject/tests/integration/components/post-page-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  (0, _qunit.module)('Integration | Component | post-page', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      // Set any properties with this.set('myProperty', 'value');
+      // Handle any actions with this.set('myAction', function(val) { ... });
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "OfCTTk1A",
+        "block": "{\"symbols\":[],\"statements\":[[1,[21,\"post-page\"],false]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
+
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "KSSLjeRL",
+        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"post-page\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), 'template block text');
+    });
+  });
+});
 define("web-miniproject/tests/lint/app.lint-test", [], function () {
   "use strict";
 
@@ -67,6 +163,14 @@ define("web-miniproject/tests/lint/app.lint-test", [], function () {
   QUnit.test('components/header.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'components/header.js should pass ESLint\n\n');
+  });
+  QUnit.test('components/new-post-button.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/new-post-button.js should pass ESLint\n\n');
+  });
+  QUnit.test('components/post-page.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/post-page.js should pass ESLint\n\n');
   });
   QUnit.test('models/post.js', function (assert) {
     assert.expect(1);
@@ -109,6 +213,14 @@ define("web-miniproject/tests/lint/templates.template.lint-test", [], function (
     assert.expect(1);
     assert.ok(true, 'web-miniproject/templates/components/header.hbs should pass TemplateLint.\n\n');
   });
+  QUnit.test('web-miniproject/templates/components/new-post-button.hbs', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'web-miniproject/templates/components/new-post-button.hbs should pass TemplateLint.\n\n');
+  });
+  QUnit.test('web-miniproject/templates/components/post-page.hbs', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'web-miniproject/templates/components/post-page.hbs should pass TemplateLint.\n\n');
+  });
   QUnit.test('web-miniproject/templates/post-page.hbs', function (assert) {
     assert.expect(1);
     assert.ok(true, 'web-miniproject/templates/post-page.hbs should pass TemplateLint.\n\n');
@@ -125,6 +237,14 @@ define("web-miniproject/tests/lint/tests.lint-test", [], function () {
   QUnit.test('integration/components/header-test.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'integration/components/header-test.js should pass ESLint\n\n');
+  });
+  QUnit.test('integration/components/new-post-button-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/new-post-button-test.js should pass ESLint\n\n');
+  });
+  QUnit.test('integration/components/post-page-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/post-page-test.js should pass ESLint\n\n');
   });
   QUnit.test('test-helper.js', function (assert) {
     assert.expect(1);

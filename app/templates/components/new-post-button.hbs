@@ -1,0 +1,16 @@
+<div class="newPostCont">
+    {{#ui-accordion class="styled"}}
+    <div class="title openNewPostCont">
+        Make a post
+    </div>
+    <div class="content">
+        <br><br>
+        <form action="/api/posts" class="ui form">
+            Title: {{input value=title}} <br>
+            Text: {{input value=text}} <br>
+            Image: {{file-upload url="/upload" class="ui button newPostButton"}} <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    {{/ui-accordion}}
+</div>
