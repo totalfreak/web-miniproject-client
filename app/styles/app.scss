@@ -1,34 +1,88 @@
-body {
-    background-color: #04afa4;
+$postBGColor: #d3dfb8;
+$postAccent: #574d68;
+$postTextColor: #504760;
+
+
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+.ember-application {
+    background-color: $postAccent;
 }
 
-text {
-    color: #2b3045;
+* {
+    color: $postTextColor;
+    font-family: 'Numito', sans-serif;
 }
 
 .header {
     width: 100%;
     height: 64px;
-    position: sticky;
+    position: fixed;
+    background-color: #2b3045;
+    color: $postBGColor;
+    
 }
 
+.header * {
+    display: inline-block;
+    color: $postBGColor;
+    padding-top: .25em;
+    padding-left: .4em;
+    font-size: 2.5em;
+    font-family: 'Numito', sans-serif;
+}
+
+.header img {
+    width: 128px;
+    height: 64px;
+    padding: .6em;
+}
 .newPostCont {
-    position: relative;
+    bottom: 2em;
+    right: 2em;
+    position: fixed;
+    width: 30em;
+    height: auto;
+    padding: 1em;
+    border-radius: 10px;
+    background-color: $postBGColor;
 }
 
-.newPostCont div {
-    position: absolute;
-    right: 0;
-    top: 0;
-}
 
 .timeline {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    
 }
 
-.postCont {
-    margin: 40px;
+.timeline div:nth-child(1) {
+    margin-top: 10em;
 }
+
+.post_container {
+    margin: 2.5em 5em;
+    margin-left: 5em;
+    padding: 25px;
+    min-width: 50em;
+    max-width: 70em;
+    min-height: 20em;
+    max-height: 60em;
+    background: $postBGColor;
+    border-radius: 5px;
+    font-family: 'Numito', sans-serif;
+}
+
+.post_container img {
+    float: right;
+    width: 100;
+    height: 100;
+    padding: 0 0 0 5px;
+}
+
+.post_container .post_text {
+    border-radius: 2px;
+    color: $postTextColor;
+}
+
+@import "ember-bootstrap/bootstrap";

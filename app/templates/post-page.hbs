@@ -5,13 +5,17 @@
 
 <div class="timeline">
 	{{#each this.model as |post|}}
-		<div class="postCont">
-			<p>Id: {{post.id}}</p>
-			<h1>{{post.title}}</h1>
-			
-			{{post.image}} 
-			<h3>{{post.text}}</h3> <br>
+		<div class="post_container">
+			<p class="post_id">Id: {{post.id}}</p>
+			<img src="{{post.image}}" class="post_image" style='max-width: 200px; max-height: 200px;'>
+			<h1 class="post_title">{{post.title}}</h1>
+			<h3 class="post_text">{{post.text}}</h3>
+		</div>
+	{{else}}
+		<div class="post_container">
+			<img src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fxn--80affa3aj0al.xn--d1ababe6aj1ada0j.xn--p1acf%2Fwp-content%2Fuploads%2F2016%2F01%2Fhomyak-senya-dlya-telegram-online-28.png&f=1" class="post_image" style='max-width: 200px; max-height: 200px;'>
+			<h1 class="post_title">No posts have been made yet</h1>
+			<h3 class="post_text">Hurry up and create the first post</h3>
 		</div>
 	{{/each}}
-	{{infinity-loader infinityModel=this.model}}
 </div>

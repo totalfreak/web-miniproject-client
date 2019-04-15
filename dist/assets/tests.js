@@ -48,6 +48,71 @@ define("web-miniproject/tests/helpers/ember-keyboard/register-test-helpers", ["e
     });
   }
 });
+define("web-miniproject/tests/helpers/validate-properties", ["exports", "ember-qunit"], function (_exports, _emberQunit) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.testValidPropertyValues = testValidPropertyValues;
+  _exports.testInvalidPropertyValues = testInvalidPropertyValues;
+  var run = Ember.run;
+
+  function validateValues(object, propertyName, values, isTestForValid) {
+    var promise = null;
+    var validatedValues = [];
+    values.forEach(function (value) {
+      function handleValidation(errors) {
+        var hasErrors = object.get('errors.' + propertyName + '.firstObject');
+
+        if (hasErrors && !isTestForValid || !hasErrors && isTestForValid) {
+          validatedValues.push(value);
+        }
+      }
+
+      run(object, 'set', propertyName, value);
+      var objectPromise = null;
+      run(function () {
+        objectPromise = object.validate().then(handleValidation, handleValidation);
+      }); // Since we are setting the values in a different run loop as we are validating them,
+      // we need to chain the promises so that they run sequentially. The wrong value will
+      // be validated if the promises execute concurrently
+
+      promise = promise ? promise.then(objectPromise) : objectPromise;
+    });
+    return promise.then(function () {
+      return validatedValues;
+    });
+  }
+
+  function testPropertyValues(propertyName, values, isTestForValid, context) {
+    var validOrInvalid = isTestForValid ? 'Valid' : 'Invalid';
+    var testName = validOrInvalid + ' ' + propertyName;
+    (0, _emberQunit.test)(testName, function (assert) {
+      var object = this.subject();
+
+      if (context && typeof context === 'function') {
+        context(object);
+      } // Use QUnit.dump.parse so null and undefined can be printed as literal 'null' and
+      // 'undefined' strings in the assert message.
+
+
+      var valuesString = QUnit.dump.parse(values).replace(/\n(\s+)?/g, '').replace(/,/g, ', ');
+      var assertMessage = 'Expected ' + propertyName + ' to have ' + validOrInvalid.toLowerCase() + ' values: ' + valuesString;
+      return validateValues(object, propertyName, values, isTestForValid).then(function (validatedValues) {
+        assert.deepEqual(validatedValues, values, assertMessage);
+      });
+    });
+  }
+
+  function testValidPropertyValues(propertyName, values, context) {
+    testPropertyValues(propertyName, values, true, context);
+  }
+
+  function testInvalidPropertyValues(propertyName, values, context) {
+    testPropertyValues(propertyName, values, false, context);
+  }
+});
 define("web-miniproject/tests/integration/components/file-upload-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
   "use strict";
 
@@ -156,6 +221,10 @@ define("web-miniproject/tests/lint/app.lint-test", [], function () {
     assert.expect(1);
     assert.ok(true, 'app.js should pass ESLint\n\n');
   });
+  QUnit.test('breakpoints.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'breakpoints.js should pass ESLint\n\n');
+  });
   QUnit.test('components/file-upload.js', function (assert) {
     assert.expect(1);
     assert.ok(false, 'components/file-upload.js should pass ESLint\n\n12:14 - \'Ember\' is not defined. (no-undef)\n14:13 - Unexpected console statement. (no-console)');
@@ -166,15 +235,19 @@ define("web-miniproject/tests/lint/app.lint-test", [], function () {
   });
   QUnit.test('components/new-post-button.js', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'components/new-post-button.js should pass ESLint\n\n');
+    assert.ok(false, 'components/new-post-button.js should pass ESLint\n\n8:5 - Unexpected console statement. (no-console)\n26:13 - Unexpected console statement. (no-console)');
   });
   QUnit.test('components/post-page.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'components/post-page.js should pass ESLint\n\n');
   });
+  QUnit.test('models/comment.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'models/comment.js should pass ESLint\n\n');
+  });
   QUnit.test('models/post.js', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'models/post.js should pass ESLint\n\n');
+    assert.ok(false, 'models/post.js should pass ESLint\n\n3:8 - \'ember\' is defined but never used. (no-unused-vars)');
   });
   QUnit.test('resolver.js', function (assert) {
     assert.expect(1);
@@ -254,6 +327,10 @@ define("web-miniproject/tests/lint/tests.lint-test", [], function () {
     assert.expect(1);
     assert.ok(true, 'unit/adapters/application-test.js should pass ESLint\n\n');
   });
+  QUnit.test('unit/models/comment-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/models/comment-test.js should pass ESLint\n\n');
+  });
   QUnit.test('unit/models/post-test.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'unit/models/post-test.js should pass ESLint\n\n');
@@ -290,6 +367,19 @@ define("web-miniproject/tests/unit/adapters/application-test", ["qunit", "ember-
     (0, _qunit.test)('it exists', function (assert) {
       let adapter = this.owner.lookup('adapter:application');
       assert.ok(adapter);
+    });
+  });
+});
+define("web-miniproject/tests/unit/models/comment-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
+  "use strict";
+
+  (0, _qunit.module)('Unit | Model | comment', function (hooks) {
+    (0, _emberQunit.setupTest)(hooks); // Replace this with your real tests.
+
+    (0, _qunit.test)('it exists', function (assert) {
+      let store = this.owner.lookup('service:store');
+      let model = store.createRecord('comment', {});
+      assert.ok(model);
     });
   });
 });
