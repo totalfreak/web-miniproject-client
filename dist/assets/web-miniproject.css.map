@@ -1,6 +1,6 @@
 {
 	"version": 3,
-	"sourceRoot": "/home/daniel/Documents/web-miniproject/client/app/styles",
+	"sourceRoot": "/home/daniel/Documents/web-miniproject-client/app/styles",
 	"file": "web-miniproject.css",
 	"sources": [
 		"../../out-322-broccoli_merge_trees_full_application/app/styles/app.scss",

@@ -2414,7 +2414,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("web-miniproject/app")["default"].create({"name":"web-miniproject","version":"0.0.0+3e1fb1f7"});
+            require("web-miniproject/app")["default"].create({"name":"web-miniproject","version":"0.0.0+27a71587"});
           }
         
 //# sourceMappingURL=web-miniproject.map
