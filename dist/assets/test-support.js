@@ -7942,7 +7942,10 @@ Ember.setupForTesting = testing.setupForTesting;
           if (el.length === 0) {
               return 'empty NodeList';
           }
-          desc = Array.prototype.slice.call(el, 0, 5).map(elementToString).join(', ');
+          desc = Array.prototype.slice
+              .call(el, 0, 5)
+              .map(elementToString)
+              .join(', ');
           return el.length > 5 ? desc + "... (+" + (el.length - 5) + " more)" : desc;
       }
       if (!(el instanceof HTMLElement || el instanceof SVGElement)) {
@@ -8140,6 +8143,11 @@ Ember.setupForTesting = testing.setupForTesting;
           message = expected;
       }
       this.pushResult({ result: result, actual: actual, expected: expected, message: message });
+  }
+
+  function matchesSelector(elements, compareSelector) {
+      var failures = elements.filter(function (it) { return !it.matches(compareSelector); });
+      return failures.length;
   }
 
   function collapseWhitespace(string) {
@@ -8360,7 +8368,9 @@ Ember.setupForTesting = testing.setupForTesting;
           else if (value.any === true) {
               var result = actualValue !== null;
               var expected = "Element " + this.targetDescription + " has attribute \"" + name + "\"";
-              var actual = result ? expected : "Element " + this.targetDescription + " does not have attribute \"" + name + "\"";
+              var actual = result
+                  ? expected
+                  : "Element " + this.targetDescription + " does not have attribute \"" + name + "\"";
               if (!message) {
                   message = expected;
               }
@@ -8538,7 +8548,7 @@ Ember.setupForTesting = testing.setupForTesting;
           var expectedProperties = Object.keys(expected);
           var result = expectedProperties.every(function (property) { return computedStyle[property] === expected[property]; });
           var actual = {};
-          expectedProperties.forEach(function (property) { return actual[property] = computedStyle[property]; });
+          expectedProperties.forEach(function (property) { return (actual[property] = computedStyle[property]); });
           if (!message) {
               var normalizedSelector = selector ? selector.replace(/^:{0,2}/, '::') : '';
               message = "Element " + this.targetDescription + normalizedSelector + " has style \"" + JSON.stringify(expected) + "\"";
@@ -8657,7 +8667,8 @@ Ember.setupForTesting = testing.setupForTesting;
               message = "Element " + this.targetDescription + " has text containing \"" + text + "\"";
           }
           if (!result && text !== collapseWhitespace(text)) {
-              console.warn('The `.includesText()`, `.containsText()`, and `.hasTextContaining()` assertions collapse whitespace. The text you are checking for contains whitespace that may have made your test fail incorrectly. Try the `.hasText()` assertion passing in your expected text as a RegExp pattern. Your text:\n' + text);
+              console.warn('The `.includesText()`, `.containsText()`, and `.hasTextContaining()` assertions collapse whitespace. The text you are checking for contains whitespace that may have made your test fail incorrectly. Try the `.hasText()` assertion passing in your expected text as a RegExp pattern. Your text:\n' +
+                  text);
           }
           this.pushResult({ result: result, actual: actual, expected: expected, message: message });
       };
@@ -8787,6 +8798,94 @@ Ember.setupForTesting = testing.setupForTesting;
           this.hasNoValue(message);
       };
       /**
+       * Assert that the target selector selects only Elements that are also selected by
+       * compareSelector.
+       *
+       * @param {string} compareSelector
+       * @param {string?} message
+       *
+       * @example
+       * assert.dom('p.red').matchesSelector('div.wrapper p:last-child')
+       */
+      DOMAssertions.prototype.matchesSelector = function (compareSelector, message) {
+          var targetElements = this.target instanceof Element ? [this.target] : this.findElements();
+          var targets = targetElements.length;
+          var matchFailures = matchesSelector(targetElements, compareSelector);
+          var singleElement = targets === 1;
+          var selectedByPart = this.target instanceof Element ? 'passed' : "selected by " + this.target;
+          var actual;
+          var expected;
+          if (matchFailures === 0) {
+              // no failures matching.
+              if (!message) {
+                  message = singleElement
+                      ? "The element " + selectedByPart + " also matches the selector " + compareSelector + "."
+                      : targets + " elements, selected by " + this.target + ", also match the selector " + compareSelector + ".";
+              }
+              actual = expected = message;
+              this.pushResult({ result: true, actual: actual, expected: expected, message: message });
+          }
+          else {
+              var difference = targets - matchFailures;
+              // there were failures when matching.
+              if (!message) {
+                  message = singleElement
+                      ? "The element " + selectedByPart + " did not also match the selector " + compareSelector + "."
+                      : matchFailures + " out of " + targets + " elements selected by " + this.target + " did not also match the selector " + compareSelector + ".";
+              }
+              actual = singleElement ? message : difference + " elements matched " + compareSelector + ".";
+              expected = singleElement
+                  ? "The element should have matched " + compareSelector + "."
+                  : targets + " elements should have matched " + compareSelector + ".";
+              this.pushResult({ result: false, actual: actual, expected: expected, message: message });
+          }
+      };
+      /**
+       * Assert that the target selector selects only Elements that are not also selected by
+       * compareSelector.
+       *
+       * @param {string} compareSelector
+       * @param {string?} message
+       *
+       * @example
+       * assert.dom('input').doesNotMatchSelector('input[disabled]')
+       */
+      DOMAssertions.prototype.doesNotMatchSelector = function (compareSelector, message) {
+          var targetElements = this.target instanceof Element ? [this.target] : this.findElements();
+          var targets = targetElements.length;
+          var matchFailures = matchesSelector(targetElements, compareSelector);
+          var singleElement = targets === 1;
+          var selectedByPart = this.target instanceof Element ? 'passed' : "selected by " + this.target;
+          var actual;
+          var expected;
+          if (matchFailures === targets) {
+              // the assertion is successful because no element matched the other selector.
+              if (!message) {
+                  message = singleElement
+                      ? "The element " + selectedByPart + " did not also match the selector " + compareSelector + "."
+                      : targets + " elements, selected by " + this.target + ", did not also match the selector " + compareSelector + ".";
+              }
+              actual = expected = message;
+              this.pushResult({ result: true, actual: actual, expected: expected, message: message });
+          }
+          else {
+              var difference = targets - matchFailures;
+              // the assertion fails because at least one element matched the other selector.
+              if (!message) {
+                  message = singleElement
+                      ? "The element " + selectedByPart + " must not also match the selector " + compareSelector + "."
+                      : difference + " elements out of " + targets + ", selected by " + this.target + ", must not also match the selector " + compareSelector + ".";
+              }
+              actual = singleElement
+                  ? "The element " + selectedByPart + " matched " + compareSelector + "."
+                  : matchFailures + " elements did not match " + compareSelector + ".";
+              expected = singleElement
+                  ? message
+                  : targets + " elements should not have matched " + compareSelector + ".";
+              this.pushResult({ result: false, actual: actual, expected: expected, message: message });
+          }
+      };
+      /**
        * @private
        */
       DOMAssertions.prototype.pushResult = function (result) {
@@ -8857,6 +8956,7 @@ Ember.setupForTesting = testing.setupForTesting;
       return DOMAssertions;
   }());
 
+  /* global QUnit */
   QUnit.assert.dom = function (target, rootElement) {
       rootElement = rootElement || this.dom.rootElement || document;
       return new DOMAssertions(target || rootElement, rootElement, this);
@@ -13624,36 +13724,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../tmp/broccoli-23280pxk6rVBBfEkF/cache-383-bundler/staging/l.js":
+/***/ "../../../../tmp/broccoli-11314lskzkP8yJBvJ/cache-390-bundler/staging/l.js":
 /*!**********************************************************************!*\
-  !*** /tmp/broccoli-23280pxk6rVBBfEkF/cache-383-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-11314lskzkP8yJBvJ/cache-390-bundler/staging/l.js ***!
   \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-23280pxk6rVBBfEkF/cache-383-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-11314lskzkP8yJBvJ/cache-390-bundler/staging/l.js?");
 
 /***/ }),
 
-/***/ "../../../../tmp/broccoli-23280pxk6rVBBfEkF/cache-383-bundler/staging/tests.js":
+/***/ "../../../../tmp/broccoli-11314lskzkP8yJBvJ/cache-390-bundler/staging/tests.js":
 /*!**************************************************************************!*\
-  !*** /tmp/broccoli-23280pxk6rVBBfEkF/cache-383-bundler/staging/tests.js ***!
+  !*** /tmp/broccoli-11314lskzkP8yJBvJ/cache-390-bundler/staging/tests.js ***!
   \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    return r('_eai_dyn_' + specifier);\n  };\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-23280pxk6rVBBfEkF/cache-383-bundler/staging/tests.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    return r('_eai_dyn_' + specifier);\n  };\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-11314lskzkP8yJBvJ/cache-390-bundler/staging/tests.js?");
 
 /***/ }),
 
 /***/ 1:
 /*!***********************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-23280pxk6rVBBfEkF/cache-383-bundler/staging/l.js /tmp/broccoli-23280pxk6rVBBfEkF/cache-383-bundler/staging/tests.js ***!
+  !*** multi /tmp/broccoli-11314lskzkP8yJBvJ/cache-390-bundler/staging/l.js /tmp/broccoli-11314lskzkP8yJBvJ/cache-390-bundler/staging/tests.js ***!
   \***********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-23280pxk6rVBBfEkF/cache-383-bundler/staging/l.js */\"../../../../tmp/broccoli-23280pxk6rVBBfEkF/cache-383-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-23280pxk6rVBBfEkF/cache-383-bundler/staging/tests.js */\"../../../../tmp/broccoli-23280pxk6rVBBfEkF/cache-383-bundler/staging/tests.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-23280pxk6rVBBfEkF/cache-383-bundler/staging/l.js_/tmp/broccoli-23280pxk6rVBBfEkF/cache-383-bundler/staging/tests.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-11314lskzkP8yJBvJ/cache-390-bundler/staging/l.js */\"../../../../tmp/broccoli-11314lskzkP8yJBvJ/cache-390-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-11314lskzkP8yJBvJ/cache-390-bundler/staging/tests.js */\"../../../../tmp/broccoli-11314lskzkP8yJBvJ/cache-390-bundler/staging/tests.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-11314lskzkP8yJBvJ/cache-390-bundler/staging/l.js_/tmp/broccoli-11314lskzkP8yJBvJ/cache-390-bundler/staging/tests.js?");
 
 /***/ })
 

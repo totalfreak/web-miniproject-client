@@ -949,9 +949,12 @@
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = void 0;
-  var _default = _labeledRadioButton.default;
-  _exports.default = _default;
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _labeledRadioButton.default;
+    }
+  });
 });
 ;define("web-miniproject/components/modal-dialog-overlay", ["exports", "ember-modal-dialog/components/modal-dialog-overlay"], function (_exports, _modalDialogOverlay) {
   "use strict";
@@ -1037,9 +1040,12 @@
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = void 0;
-  var _default = _radioButtonInput.default;
-  _exports.default = _default;
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _radioButtonInput.default;
+    }
+  });
 });
 ;define("web-miniproject/components/radio-button", ["exports", "ember-radio-button/components/radio-button"], function (_exports, _radioButton) {
   "use strict";
@@ -1047,9 +1053,12 @@
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = void 0;
-  var _default = _radioButton.default;
-  _exports.default = _default;
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _radioButton.default;
+    }
+  });
 });
 ;define("web-miniproject/components/tether-dialog", ["exports", "ember-modal-dialog/components/tether-dialog"], function (_exports, _tetherDialog) {
   "use strict";
@@ -1832,32 +1841,6 @@
 
   _exports.default = _default;
 });
-;define("web-miniproject/services/-observer-admin", ["exports", "ember-in-viewport/services/-observer-admin"], function (_exports, _observerAdmin) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(_exports, "default", {
-    enumerable: true,
-    get: function () {
-      return _observerAdmin.default;
-    }
-  });
-});
-;define("web-miniproject/services/-raf-admin", ["exports", "ember-in-viewport/services/-raf-admin"], function (_exports, _rafAdmin) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(_exports, "default", {
-    enumerable: true,
-    get: function () {
-      return _rafAdmin.default;
-    }
-  });
-});
 ;define("web-miniproject/services/ajax", ["exports", "ember-ajax/services/ajax"], function (_exports, _ajax) {
   "use strict";
 
@@ -1871,6 +1854,19 @@
   });
 
   _exports.default = _default;
+});
+;define("web-miniproject/services/in-viewport", ["exports", "ember-in-viewport/services/in-viewport"], function (_exports, _inViewport) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _inViewport.default;
+    }
+  });
 });
 ;define("web-miniproject/services/infinity", ["exports", "ember-infinity/services/infinity"], function (_exports, _infinity) {
   "use strict";
@@ -2015,24 +2011,6 @@
 
   _exports.default = _default;
 });
-;define("web-miniproject/templates/components/labeled-radio-button", ["exports"], function (_exports) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-
-  var _default = Ember.HTMLBars.template({
-    "id": "A/ggGH6E",
-    "block": "{\"symbols\":[\"&default\"],\"statements\":[[1,[27,\"radio-button\",null,[[\"radioClass\",\"radioId\",\"changed\",\"disabled\",\"groupValue\",\"name\",\"required\",\"value\"],[[23,[\"radioClass\"]],[23,[\"radioId\"]],\"innerRadioChanged\",[23,[\"disabled\"]],[23,[\"groupValue\"]],[23,[\"name\"]],[23,[\"required\"]],[23,[\"value\"]]]]],false],[0,\"\\n\\n\"],[14,1],[0,\"\\n\"]],\"hasEval\":false}",
-    "meta": {
-      "moduleName": "web-miniproject/templates/components/labeled-radio-button.hbs"
-    }
-  });
-
-  _exports.default = _default;
-});
 ;define("web-miniproject/templates/components/modal-dialog", ["exports", "ember-modal-dialog/templates/components/modal-dialog"], function (_exports, _modalDialog) {
   "use strict";
 
@@ -2077,24 +2055,6 @@
     "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1]],\"hasEval\":false}",
     "meta": {
       "moduleName": "web-miniproject/templates/components/post-page.hbs"
-    }
-  });
-
-  _exports.default = _default;
-});
-;define("web-miniproject/templates/components/radio-button", ["exports"], function (_exports) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-
-  var _default = Ember.HTMLBars.template({
-    "id": "g2GSVWaz",
-    "block": "{\"symbols\":[\"&default\"],\"statements\":[[4,\"if\",[[24,1]],null,{\"statements\":[[0,\"  \"],[7,\"label\"],[12,\"class\",[28,[\"ember-radio-button \",[27,\"if\",[[23,[\"checked\"]],\"checked\"],null],\" \",[21,\"joinedClassNames\"]]]],[12,\"for\",[21,\"radioId\"]],[9],[0,\"\\n    \"],[1,[27,\"radio-button-input\",null,[[\"class\",\"id\",\"disabled\",\"name\",\"required\",\"groupValue\",\"value\",\"changed\"],[[23,[\"radioClass\"]],[23,[\"radioId\"]],[23,[\"disabled\"]],[23,[\"name\"]],[23,[\"required\"]],[23,[\"groupValue\"]],[23,[\"value\"]],\"changed\"]]],false],[0,\"\\n\\n    \"],[14,1],[0,\"\\n  \"],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"  \"],[1,[27,\"radio-button-input\",null,[[\"class\",\"id\",\"disabled\",\"name\",\"required\",\"groupValue\",\"value\",\"changed\"],[[23,[\"radioClass\"]],[23,[\"radioId\"]],[23,[\"disabled\"]],[23,[\"name\"]],[23,[\"required\"]],[23,[\"groupValue\"]],[23,[\"value\"]],\"changed\"]]],false],[0,\"\\n\"]],\"parameters\":[]}]],\"hasEval\":false}",
-    "meta": {
-      "moduleName": "web-miniproject/templates/components/radio-button.hbs"
     }
   });
 
@@ -2414,7 +2374,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("web-miniproject/app")["default"].create({"name":"web-miniproject","version":"0.0.0+27a71587"});
+            require("web-miniproject/app")["default"].create({"name":"web-miniproject","version":"0.0.0+dd9ff339"});
           }
         
 //# sourceMappingURL=web-miniproject.map

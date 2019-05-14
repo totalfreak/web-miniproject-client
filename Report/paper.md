@@ -7,7 +7,7 @@ author:
 
 # Introduction
 
-This website was built using EmberJS, and the accompanying server was built using node.js the database is a noSQL mongoDB cluster hosted on atlas.
+This website was built using EmberJS, and the accompanying server was built using node.js the database is a noSQL mongoDB cluster hosted on atlas. There is also a dash of ajax, for making the *POST* request.
 
 ## Emberjs
 
@@ -60,6 +60,7 @@ Text: {{textarea value=text}} <br>
 <input type="submit" {{action "sendRequest" title image text}}>
 ```
 
+The actual ajax request here, with the title, image, and text from the new post button template.
 
 ```javascript
 if(title.length > 5 && text.length > 20) {
@@ -74,4 +75,17 @@ if(title.length > 5 && text.length > 20) {
     	}
 	}
 });
+```
+
+On the server side, the nodejs server is equipped with express, mongoose, and body parser, with which I made the post schema, and allowed it to save the incoming data as posts, and send back the newest 50 posts.
+
+The function called on the *Post* schema, gets every post in the database, limits it to 50 and sorts it in reverse, so that the newest post would be on top of the page.
+
+```javascript
+Post.find(function(err, posts) {
+    if (err) {
+        res.send(err);
+    }
+    res.json({posts: posts});
+}).limit(50).sort({_id:-1});
 ```
