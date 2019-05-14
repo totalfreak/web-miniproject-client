@@ -59,3 +59,19 @@ Image url: {{input value=image}} <br>
 Text: {{textarea value=text}} <br>
 <input type="submit" {{action "sendRequest" title image text}}>
 ```
+
+
+```javascript
+if(title.length > 5 && text.length > 20) {
+    this.get('ajax').request('https://web-miniproject-
+	server.herokuapp.com/api/posts', {
+        method: 'POST',
+        data: {
+        post: {
+            title: title,
+            image: image,
+            text: text
+    	}
+	}
+});
+```
